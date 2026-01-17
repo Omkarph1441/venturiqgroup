@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sustainability - Venturiq</title>
+
+  <style>
+    /* Reset some browser defaults */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      background-color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    header .logo span {
+      font-size: 22px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    header nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    header nav a:hover,
+    header nav a.active {
+      font-weight: bold;
+    }
+
+    /* Main Section */
+    .page-title {
+      text-align: center;
+      margin: 60px 0 20px;
+    }
+
+    .page-title h1 {
+      font-size: 48px;
+      font-weight: 700;
+    }
+
+    .underline {
+      width: 60px;
+      height: 4px;
+      background-color: orange;
+      margin: 10px auto 0;
+    }
+
+    .content-section {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      padding: 40px; 
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    .image-box img {
+      width: 350px;
+      border-radius: 10px;
+    }
+
+    .text-box {
+      max-width: 600px;
+    }
+
+    .text-box h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .text-box p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .content-section {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      padding: 40px; 
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    .vbpl-box img {
+      width: 350px;
+      border-radius: 10px;
+    }
+
+    .txt-box {
+      max-width: 600px;
+    }
+
+    .txt-box h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .txt-box p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .vbpl {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 50px;
+      flex-wrap: wrap;
+      background: #f9f9f9;
+    }
+
+    .vbpl img {
+      width: 350px;
+      border-radius: 8px;
+    }
+
+    .vbpl-text {
+      max-width: 500px;
+    }
+
+    .vbpl-text h2 {
+      margin-bottom: 10px;
+    }
+
+    .image-section {
+      position: relative;
+      text-align: center;
+      margin: 2em 0;
+    }
+
+    .image-section img {
+      width: 80%;
+      max-width: 800px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+
+    /* Sub Section */
+    .sub-title {
+      padding: 0 40px 40px;
+    }
+
+    .sub-title h2 {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: left;
+      padding: 10px 30px;
+      color: #555;
+      font-size: 20px;
+    }
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+  }
+
+  .dropdown-menu li {
+    border-bottom: 1px solid #eee;
+  }
+
+  .dropdown-menu li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    white-space: nowrap;
+  }
+
+  .dropdown-menu a:hover {
+    background: #f8f9fa;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  
+  /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      header nav a {
+        font-size: 14px;
+        margin: 5px 20px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+    }
+
+    .page-title h1 {
+      font-size: 36px;
+    }
+
+    .content-section {
+      padding: 20px;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .image-box img, .vbpl img {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .text-box, .txt-box, .vbpl-text {
+      max-width: 100%;
+    }
+
+    .image-section img {
+      width: 95%;
+    }
+
+    .sub-title {
+      padding: 0 20px 20px;
+    }
+  </style>
+</head>
+<body>
+
+   <header>
+    <div class="logo">
+      <!-- Replace this logo link with your own logo file (e.g., logo.png in same folder) -->
+      <img src="image/logo.jpeg" alt="Venturiq Logo">
+      <div class="Venturiq"></div>
+      <span>Venturiq</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+       <span></span>
+       <span></span>
+       <span></span>
+     </div>
+     <nav id="nav-menu">
+      <a href="index.html" >Home</a>
+      <a href="group.html">Venturiq Group</a>
+      <a href="technology.html">Technology Partners</a>
+      <a href="achievement.html">Achievements</a>
+      <a href="#" class="active">Sustainability</a>
+      <a href="gallery.html" class="dropdown">Gallery</a>
+      <a href="team.html">Team</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-title">
+      <h1>Sustainability</h1>
+      <div class="underline"></div>
+    </section>
+
+    <section class="content-section">
+      <div class="image-box reverse">
+        <img src="image/goals.jpg" alt="Green Plants" />
+      </div>
+      <div class="text-box">
+        <h2>Sustainability Development Goals</h2>
+        <p>
+          We see sustainable business practices as a defining element of competitiveness to maintain the Corporation’s status, equity and standing, both in the market and in the society.
+          Our attention is on what we produce; how we buy and sell; how we affect the environment; how we recruit, train and develop our own people, how we invest in the community and respect the rights of people.
+        </p>
+      </div>
+    </section>
+
+    
+    <section class="content-section">
+      <div class="image-box">
+        <img src="image/health.jpeg" alt="Green Plants" />
+      </div>
+      <div class="text-box">
+        <h2>Health at Venturiq Group</h2>
+        <p>This policy aims to safeguard and promote employee health, recognizing it as essential to productivity and organizational effectiveness. It focuses on identifying and controlling health risks, providing timely medical care, and ensuring both physical and mental well-being. Compliance with legal standards and regular health check-ups are key components, along with awareness programmes on substance abuse. The policy also emphasizes protective measures in hazardous environments and regular reviews to track progress.
+        </p>
+      </div>
+    </section>
+
+     <section class="content-section">
+      <div class="image-box">
+        <img src="image/safety.png" alt="Green Plants" />
+      </div>
+      <div class="text-box">
+        <h2>Safety at Venturiq Group</h2>
+        <p>At venturiq group, we believe that it is possible to fuel the energy needs of the Nation while also protecting people and the environment. We are committed to conducting business in a manner that is compatible with the environmental and economic needs of the communities in which we operate, and that protects the safety and health of our employees, those involved with our operations, our customers and the public.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+     // Toggle menu for mobile
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('active');
+    }
+    // JavaScript functionality (placeholder)
+    console.log("Sustainability page loaded.");
+  </script>
+</body>
+</html>

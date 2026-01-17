@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Venturiq Group</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #fff; color: #333; line-height: 1.6; }
+
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 50px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky; top: 0; z-index: 1000;
+    }
+    header .logo { display: flex; align-items: center; }
+    header .logo img { height: 40px; margin-right: 10px; }
+    header .logo span { font-size: 22px; font-weight: bold; }
+    header nav a { margin: 0 12px; text-decoration: none; color: #333; font-size: 14px; }
+    header nav a:hover, header nav a.active { font-weight: bold; }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    .hero { text-align: center; padding: 3rem 1rem; }
+    .hero h1 { font-size: 2.5rem; }
+    .underline { width: 60px; height: 4px; background: orange; margin: 0.5rem auto; }
+
+    section { padding: 3rem 2rem; }
+
+    /* Shared Layout for Overview, Project, Ethics */
+    .text-img-row {
+      display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;
+    }
+    .text-img-row img {
+      width: 100%; max-width: 450px; height: 300px; object-fit: cover;
+      border-radius: 8px; transition: all 0.3s ease-in-out;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .text-img-row img:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+    .text { flex: 1; }
+    .text h2 { margin-bottom: 1rem; color: #222; }
+
+    /* Our Project Section Background */
+    .project { background: #f9f9f9; border-radius: 8px; }
+
+    /* Product Cards */
+    .product h2 { text-align: center; margin-bottom: 2rem; }
+    .product-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+    .card { perspective: 1000px; cursor: pointer; }
+    .card-inner {
+      position: relative; width: 100%; height: 260px;
+      text-align: center; transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .card:hover .card-inner { transform: rotateY(180deg); }
+    .card-front, .card-back {
+      position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+      border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 1rem;
+    }
+    .card-front { background: #fff; }
+    .card-front img { width: 60px; height: 60px; margin-bottom: 1rem; }
+    .card-front h3 { font-size: 1.2rem; }
+    .card-back {
+      background: #f4f4f4; transform: rotateY(180deg);
+      font-size: 0.9rem; text-align: left;
+    }
+
+    footer {
+      text-align: center; padding: 1rem; background: #f7f7f7;
+      margin-top: 2rem; font-size: 0.9rem; color: #666;
+    }
+
+    @media screen and (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      header nav a {
+        font-size: 14px;
+        margin: 5px 20px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .text-img-row { flex-direction: column; }
+      .text-img-row img { max-width: 100%; height: auto; }
+    }
+  </style>
+</head>
+<body>
+   <header>
+    <div class="logo">
+      <img src="image/logo.jpeg" alt="Venturiq Logo">
+      <span>Venturiq</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="#" class="active">Venturiq Group</a>
+      <a href="technology.html">Technology Partners</a>
+      <a href="achievement.html">Achievements</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="team.html">Team</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Venturiq Group</h1>
+      <div class="underline"></div>
+    </section>
+
+    <!-- Overview -->
+    <section class="overview">
+      <div class="text-img-row">
+        <img src="image/overview.jpg" alt="Overview Image" />
+        <div class="text">
+          <h2>Overview</h2>
+          <p>
+            Venturiq Group is committed to developing sustainable energy solutions with a focus on Bio-CNG and renewable fuels. 
+            With India rapidly urbanizing, the need for cleaner air and sustainable energy has never been greater. 
+            Natural Gas and Renewable Energy offer an eco-friendly alternative, reducing harmful emissions and supporting 
+            a healthier future for both people and the environment.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project -->
+    <section class="project">
+      <div class="text-img-row reverse">
+        <img src="image/our.png" alt="Project Map Image"/>
+        <div class="text">
+          <h2>Our Project</h2>
+          <p>
+            Venturiq Group specializes in setting up Bio-CNG plants on a turnkey basis. 
+            Our cluster-based model ensures self-sufficient production and distribution of compressed bio-gas, 
+            covering every stage from feedstock management to dispensing stations.  
+            By leveraging advanced technology, we maximize gas yield from agricultural residues and biomass, 
+            contributing to a cleaner and greener energy ecosystem.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product -->
+    <section class="product">
+      <h2>Our Products</h2>
+      <div class="product-grid">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="image/biocarburant.jpg" alt="CBG Icon">
+              <h3>Compressed Bio Gas</h3>
+            </div>
+            <div class="card-back">
+              <p>
+                Renewable fuel from organic waste.  
+                <ul>
+                  <li>Reduces fossil fuel use</li>
+                  <li>Lowers emissions</li>
+                  <li>Supports SATAT initiative</li>
+                  <li>Qualifies for carbon credits</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="image/fom.png" alt="FOM Icon">
+              <h3>Organic Manure</h3>
+            </div>
+            <div class="card-back">
+              <p>
+                By-product of CBG production.  
+                <ul>
+                  <li>Liquid Bio-Slurry</li>
+                  <li>Dried Bio-Manure</li>
+                  <li>Nutrient-rich for agriculture</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="image/co2.png" alt="CO2 Icon">
+              <h3>Carbon Dioxide</h3>
+            </div>
+            <div class="card-back">
+              <p>
+                Captured during purification process.  
+                Useful in industrial and commercial applications, reducing waste and creating value.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ethics -->
+    <section class="Ethics">
+      <div class="text-img-row">
+        <img src="image/ethics.jpeg" alt="Ethics Image"/>
+        <div class="text">
+          <h2>Our Policy & Ethics</h2>
+          <p>We prioritize sustainability, transparency, and responsibility in all our projects, 
+          ensuring long-term benefits for the environment, stakeholders, and communities.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Toggle menu for mobile
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects - Venturiq</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      background-color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    header .logo span {
+      font-size: 22px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    header nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    header nav a:hover {
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    header nav a.active {
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    .page-title {
+      text-align: center;
+      margin: 60px 0 20px;
+    }
+
+    .page-title h1 {
+      font-size: 48px;
+      font-weight: 700;
+    }
+
+    .underline {
+      width: 60px;
+      height: 4px;
+      background-color: orange;
+      margin: 10px auto 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .card {
+      text-align: center;
+      width: 200px;
+    }
+
+    .circle-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 15px;
+      border: 2px solid #ccc;
+    }
+
+    .circle-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .location {
+      color: #444;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .land {
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      header nav a {
+        font-size: 14px;
+        margin: 5px 20px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="image/logo.jpeg" alt="Venturiq Logo">
+      <span>Venturiq</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="group.html">Venturiq Group</a>
+      <a href="technology.html">Technology Partners</a>
+      <a href="achievement.html">Achievements</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="team.html">Team</a>
+      <a href="#" class="active">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-title">
+      <h1>Projects</h1>
+      <div class="underline"></div>
+    </section>
+
+  <div class="container">
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/nesari.PNG" alt="Venturiq Biofuels Pvt. Ltd." style="object-position: 0% 0%;">
+    </div>
+    <div class="title">Venturiq Biofuels Pvt.Ltd.</div>
+    <div class="location">Nesari, Maharashtra - India</div>
+    <div class="land">Land - 10 Acer</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/hitni.PNG" alt="Venturiq Energy Pvt. Ltd." style="object-position: 25% 0%;">
+    </div>
+    <div class="title">Venturiq Energy Pvt.Ltd.</div>
+    <div class="location">Hitni, Maharashtra - India</div>
+    <div class="land">Land - 8 Acer</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/nepatgaon.PNG" alt="Nandadeep BioFuels P.Ltd." style="object-position: 50% 0%;">
+    </div>
+    <div class="title">Nandadeep BioFuels Pvt.Ltd.</div>
+    <div class="location">Pandharpur, Maharashtra - India</div>
+    <div class="land">Land - 8 Acer</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/umarge.PNG" alt="Swamiraj Bio Fuels P. Ltd." style="object-position: 75% 0%;">
+    </div>
+    <div class="title">Swamiraj Bio Fuels Pvt.Ltd.</div>
+    <div class="location">Akkalkot, Maharashtra - India</div>
+    <div class="land">Land - 10 Acer</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/karmala.PNG" alt="Kamlai Green Energy P. Ltd." style="object-position: 100% 0%;">
+    </div>
+    <div class="title">Kamlai Green Energy Pvt.Ltd.</div>
+    <div class="location">Karmala, Maharashtra - India</div>
+    <div class="land">Land - 8 Acer</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/yougandhra.jpeg" alt="Venturiq Biofuels Pvt. Ltd." style="object-position: 0% 0%;">
+    </div>
+    <div class="title">Yougandhra Natural gas Pvt.Ltd.</div>
+    <div class="location">Ahmednagar, Maharashtra - India</div>
+    <div class="land">Land - 10 Acer</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/barshi.jpeg" alt="Ramgiri Bio Energy Pvt.Ltd." style="object-position: 25% 0%;">
+    </div>
+    <div class="title">Ramgiri Bio Energy Pvt.Ltd.</div>
+    <div class="location">Barshi, Maharashtra - India </div>
+    <div class="land">Land - 6 Acer</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/uks.jpeg" alt="UKS Biofuels Pvt.Ltd." style="object-position: 50% 0%;">
+    </div>
+    <div class="title">UKS Biofuels Pvt.Ltd.</div>
+    <div class="location">Vishakhapatnam, Andhra Pradesh India</div>
+    <div class="land">Land - 8 Acer</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/ashti.jpeg" alt="Ashti Natural Gas Pvt.Ltd. " style="object-position: 75% 0%;">
+    </div>
+    <div class="title">Ashti Natural Gas Pvt.Ltd. </div>
+    <div class="location">Ashti, Maharashtra - India </div>
+    <div class="land">Land - 8 Acer</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/arya san.PNG" alt="Arya San Bio Renewables Pvt.Ltd." style="object-position: 100% 0%;">
+    </div>
+    <div class="title">Arya San Bio Renewables Pvt.Ltd.</div>
+    <div class="location">Aurangabad, Maharashtra - India</div>
+    <div class="land">Land</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/maayba.PNG" alt="Maayba Cleanfuel Pvt.Ltd." style="object-position: 100% 0%;">
+    </div>
+    <div class="title">Maayba Cleanfuel Pvt.Ltd.</div>
+    <div class="location">Sindhudurg, Maharashtra - India</div>
+    <div class="land">Land</div>
+  </div>
+
+  <div class="card">
+    <div class="circle-image">
+      <img src="image/solapur.PNG" alt="Hydrotech Energy Pvt.Ltd." style="object-position: 100% 0%;">
+    </div>
+    <div class="title">Hydrotech Energy Pvt.Ltd.</div>
+    <div class="location">Solhapur, Maharashtra - India</div>
+    <div class="land">Land</div>
+  </div>
+
+</div>
+
+    <!-- Company Directory (No Search) -->
+    <div class="container mx-auto p-6">
+      <div id="companyList" class="grid md:grid-cols-2 gap-3">
+        <!-- Company cards will be rendered here -->
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const companies = [
+      { name: "VENTURIQ ENERGY PRIVATE LIMITED", location: "SS.NO 29/C/1 FLAT NO.202, E WARD, TARABAI PARK, ..." },
+      { name: "VENTURIQ BIOFUELS PRIVATE LIMITED", location: "H NO 1338, NESARI, TAL GADHINGLAJ, KOLHAPUR, ..." },
+      { name: "YUGANDHARA NATURAL GAS PRIVATE LIMITED", location: "H. NO. 1262 KOREGAON ROAD, KARJAT AHMEDNAGAR, ..." },
+      { name: "SWAMIRAJ BIO-FUELS PRIVATE LIMITED", location: "FLAT H 1, VIDYAVIHAR APARTMENT, 162/17, RLY LINE, ..." },
+      { name: "KAMLAI GREEN ENERGY PRIVATE LIMITED", location: "KAMLADEVI HOUS., SOC. 12 BANG, Karmala Town ( ..." },
+      { name: "RAMGIRI BIO ENERGY PRIVATE LIMITED", location: "RAMGIRI BIO ENERGY PRIVATE LIMITED C/O BALASAH..." },
+      { name: "UKS BIOFUELS PRIVATE LIMITED", location: "H No. 39-27-42/1/2, 1st Floor, Sri Hills, Ayya..." },
+      { name: "NANDADEEP BIO-FUELS PRIVATE LIMITED", location: "NANDADEEP BIO-FUELS PRIVATE LIMITED FLAT NO 14..." },
+      { name: "ASHTI NATURAL GAS PRIVATE LIMITED", location: "C/O DIGAMBAR MARUTI UDMANE GAT. NO. 376 KHADKA..." },
+      { name: "ARYA SAN BIO RENEWABLES PRIVATE LIMITED", location: "" },
+      { name: "HYDROTECH ENERGY PRIVATE LIMITED", location: "" },
+      { name: "MAAYBA CLEANFUEL PRIVATE LIMITED", location: "" }
+    ];
+
+    const companyList = document.getElementById("companyList");
+
+    function renderCompanies(data) {
+      companyList.innerHTML = "";
+      data.forEach(c => {
+        const card = document.createElement("div");
+        card.className =
+          "flex items-center justify-between bg-white p-4 rounded-lg shadow-sm border hover:shadow-md transition";
+
+        card.innerHTML = `
+          <!-- Left: Text -->
+          <div class="flex-1 pr-4">
+            <h2 class="text-base font-semibold text-gray-800 leading-snug">${c.name}</h2>
+            <p class="text-sm text-gray-600">${c.location}</p>
+          </div>
+
+          <!-- Right: Icon -->
+          <a href="https://www.google.com/maps?q=${encodeURIComponent(
+            c.location
+          )}" 
+             target="_blank"
+             class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 hover:bg-blue-200 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                 class="w-6 h-6 text-blue-600" 
+                 fill="currentColor" 
+                 viewBox="0 0 20 20">
+              <path fill-rule="evenodd" 
+                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" 
+                    clip-rule="evenodd"/>
+            </svg>
+          </a>
+        `;
+        companyList.appendChild(card);
+      });
+    }
+
+    renderCompanies(companies);
+
+    // Toggle menu for mobile
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

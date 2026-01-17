@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venturiq</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    header .logo span {
+      font-size: 22px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    header nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    header nav a:hover,
+    header nav a.active {
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    .highlight {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .highlight h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .underline {
+      width: 120px;
+      height: 4px;
+      background-color: orange;
+      margin: 0 auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #eee;
+      margin-top: 100px;
+      font-size: 14px;
+    }
+
+    /* Dropdown for navbar */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      z-index: 1000;
+    }
+
+    .dropdown-menu li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-menu li:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #333;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f8f9fa;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* Gallery Section Styles */
+    .gallery-section {
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .dropdown-toggle {
+      cursor: pointer;
+      background-color: #eee;
+      padding: 12px;
+      border-radius: 6px;
+      transition: 0.3s;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .dropdown-toggle:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown-content {
+      display: none;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    /* Photo Slider */
+       .slider {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .arrows {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .arrows.left {
+      left: 20px;
+    }
+
+    .arrows.right {
+      right: 20px;
+    }
+    /* Video Embeds */
+    .video-wrapper {
+      margin: 20px auto;
+      max-width: 560px;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      header .logo span {
+        font-size: 18px;
+      }
+
+      header nav a {
+        font-size: 14px;
+        margin: 5px 20px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .highlight h1 {
+        font-size: 32px;
+      }
+
+      .slider {
+        height: 300px;
+      }
+
+      .arrows {
+        font-size: 24px;
+        padding: 8px;
+      }
+
+      .arrows.left {
+        left: 10px;
+      }
+
+      .arrows.right {
+        right: 10px;
+      }
+
+      .video-wrapper iframe {
+        width: 100%;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="image/logo.jpeg" alt="Venturiq Logo">
+      <span>Venturiq</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="group.html">Venturiq Group</a>
+      <a href="technology.html">Technology Partners</a>
+      <a href="achievement.html">Achievements</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="#" class="active">Gallery</a>
+      <ul class="dropdown-menu">
+        <li><a href="#photoDropdown">Photos</a></li>
+        <li><a href="#videoDropdown">Videos</a></li>
+      </ul>
+      <a href="team.html">Team</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="highlight">
+      <h1>Gallery</h1>
+      <div class="underline"></div>
+    </section>
+
+    <!-- PHOTOS SECTION -->
+    <section class="gallery-section">
+      <h2 onclick="toggleDropdown('photoDropdown')" class="dropdown-toggle">Photos</h2>
+      <div id="photoDropdown" class="dropdown-content" style="display: block;">
+        <div class="slider">
+    <div class="slide active" style="background-image: url('image/slide1.jpeg');">
+    </div>
+    <div class="slide" style="background-image: url('image/slide2.jpeg');">
+      </div>
+      <div class="slide" style="background-image: url('image/slide3.jpeg');"></div>
+      <div class="slide" style="background-image: url('image/slide4.jpeg');"></div>
+      <div class="slide" style="background-image: url('image/slide5.jpeg');"></div>
+      <div class="slide" style="background-image: url('image/slide6.jpeg');"></div>
+      <div class="slide" style="background-image: url('image/slide7.jpeg');"></div>
+    <span class="arrows left" onclick="prevSlide()">&#10094;</span>
+    <span class="arrows right" onclick="nextSlide()">&#10095;</span>
+  </div>
+      </div>
+    </section>
+
+    <!-- VIDEOS SECTION -->
+    <section class="gallery-section">
+      <h2 onclick="toggleDropdown('videoDropdown')" class="dropdown-toggle">Videos</h2>
+      <div id="videoDropdown" class="dropdown-content">
+        <div class="video-wrapper">
+          
+          <iframe id="youtube-iframe" width="560" height="315" src="https://www.youtube.com/embed/Wl723BpgNcM"
+            title="YouTube video" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Script Section -->
+  <script>
+    // Toggle menu for mobile
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('active');
+    }
+
+    // Toggle dropdown visibility
+    function toggleDropdown(id) {
+      const element = document.getElementById(id);
+      element.style.display = (element.style.display === "block") ? "none" : "block";
+    }
+
+    // Function to extract YouTube video ID from URL
+    // function getYouTubeVideoId(url) {
+    //   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    //   const match = url.match(regExp);
+    //   return (match && match[2].length == 11) ? match[2] : null;
+    // }
+
+    // Function to load YouTube video
+    // function loadYouTubeVideo() {
+    //   const url = document.getElementById('youtube-url').value.trim();
+    //   const videoId = getYouTubeVideoId(url);
+    //   if (videoId) {
+    //     const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+    //     document.getElementById('youtube-iframe').src = embedUrl;
+    //   } else if (url) {
+    //     alert('Invalid YouTube URL. Please enter a valid YouTube video link.');
+    //   }
+    // }
+
+    // Auto-load video on paste (removed as element not present)
+
+    // Photo slider logic
+     let slides = document.querySelectorAll('.slide');
+    let index = 0;
+
+    function showSlide(i) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[i].classList.add('active');
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }
+
+    function prevSlide() {
+      index = (index - 1 + slides.length) % slides.length;
+      showSlide(index);
+    }
+
+    setInterval(nextSlide, 5000); 
+    console.log("Gallery dropdowns and slider initialized.");
+  </script>
+</body>
+</html>

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements - Venturiq</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    header nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    header nav a:hover,
+    header nav a.active {
+      font-weight: bold;
+    }
+
+    .hero { 
+      text-align: center; 
+      padding: 4rem 1rem; 
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23006400" opacity="0.1"/><circle cx="20" cy="20" r="0.5" fill="%23006400" opacity="0.1"/><circle cx="80" cy="30" r="1.5" fill="%23006400" opacity="0.1"/><circle cx="30" cy="80" r="0.8" fill="%23006400" opacity="0.1"/><circle cx="70" cy="70" r="1.2" fill="%23006400" opacity="0.1"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .hero h1 { 
+      font-size: 2.8rem; 
+      color: #000000;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .underline { 
+      width: 80px; 
+      height: 4px; 
+      background: linear-gradient(90deg, #ff6b35, #f7931e);
+      margin: 1rem auto; 
+      border-radius: 2px;
+    }
+
+
+    /* Achievements Section */
+    .achievements {
+      padding: 60px 50px;
+      text-align: center;
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    }
+
+    .achievements h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #006400;
+      position: relative;
+    }
+
+    .achievements p {
+      font-size: 16px;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .achievement-card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #006400, #28a745);
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .achievement-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .achievement-card h3 {
+      font-size: 20px;
+      color: #006400;
+      margin-bottom: 10px;
+    }
+
+    .achievement-card p {
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Certificates Section */
+    .certificates {
+      padding: 50px;
+      background: #f9f9f9;
+    }
+
+    .certificates h2 {
+      text-align: center;
+      font-size: 28px;
+      color: #006400;
+    }
+
+    .cert-grid {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .cert-card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    .cert-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .cert-card button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #006400;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .pdf-viewer {
+      width: 100%;
+      height: 500px;
+      margin-top: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+
+    /* Nursery Section */
+    .nursery {
+      padding: 50px;
+      background: #fff;
+    }
+
+    .nursery h2 {
+      text-align: center;
+      font-size: 32px;
+      color: #006400;
+      margin-bottom: 10px;
+    }
+
+    .nursery-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .nursery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .nursery-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .nursery-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .nursery-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .nursery-content {
+      padding: 25px;
+    }
+
+    .nursery-content h3 {
+      font-size: 24px;
+      color: #006400;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nursery-content h3::before {
+      content: "🌱";
+      margin-right: 10px;
+      font-size: 28px;
+    }
+
+    .nursery-features {
+      margin: 20px 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: start;
+      margin: 10px 0;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+
+    .feature-icon {
+      color: #28a745;
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .nursery-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #006400, #28a745);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: bold;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    .nursery-process {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+    }
+
+    .nursery-process h4 {
+      color: #006400;
+      margin-bottom: 15px;
+    }
+
+    .process-steps {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+      padding: 10px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .step-number {
+      background: #006400;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      font-weight: bold;
+    }
+
+    .gallery-section {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .gallery-section h3 {
+      font-size: 28px;
+      color: #006400;
+      margin-bottom: 30px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      padding: 15px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+        padding: 0 20px;
+      }
+      
+      .achievements {
+        padding: 40px 20px;
+      }
+      
+      .achievements h2 {
+        font-size: 24px;
+      }
+      
+      .achievement-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .nursery {
+        padding: 40px 20px;
+      }
+      
+      .nursery h2 {
+        font-size: 24px;
+      }
+      
+      .nursery-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      
+      .nursery-card {
+        margin: 0 auto;
+        max-width: 400px;
+      }
+      
+      .nursery-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      
+      .process-steps {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .step {
+        min-width: auto;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+      }
+      
+      .certificates {
+        padding: 40px 20px;
+      }
+      
+      .cert-card h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="image/logo.jpeg">
+      <span>Venturiq</span>
+    </div>
+   <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="group.html">Venturiq Group</a>
+      <a href="technology.html">Technology Partners</a>
+      <a href="#" class="active">Achievements</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="team.html">Team</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Our Achievements</h1>
+      <div class="underline"></div>
+      <p>Celebrating excellence in sustainable energy solutions and environmental stewardship through innovation, dedication, and measurable impact.</p>
+    </section>
+  </main>
+
+  <!-- Achievements -->
+  <!-- Achievements -->
+<section class="achievements">
+  <h2>What We Have Achieved</h2>
+  <p>
+    Our achievements reflect strong partnerships, sustainable practices, and large-scale
+    execution of green and renewable energy projects focused on reducing carbon footprints.
+  </p>
+
+  <div class="achievement-grid">
+
+    <!-- Card 1 -->
+    <div class="achievement-card">
+      <h3>Strategic Green Partnerships</h3>
+      <p>
+        Tied up with multiple entities involved in green and renewable energy projects,
+        actively working towards reducing carbon footprints through the use of
+        sustainable and eco-friendly materials.
+      </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="achievement-card">
+      <h3>EPC Turnkey Contracts</h3>
+      <p>
+        Executing EPC contracts on a turnkey basis with <strong>09 companies</strong>
+        to develop <strong>10 TPD CBG manufacturing units</strong>, utilizing
+        <strong>80% press mud</strong> and <strong>20% Napier grass</strong>
+        as base raw materials.
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="achievement-card">
+      <h3>Raw Material Supply Network</h3>
+      <p>
+        Established long-term raw material supply contracts with farmers for
+        Napier grass and with sugar industries for press mud,
+        ensuring consistent and sustainable input supply for every project.
+      </p>
+    </div>
+
+    <!-- Card 4 (NEW) -->
+    <div class="achievement-card">
+      <h3>IOCL Letter of Intent (LOI)</h3>
+      <p>
+        Received Letter of Intent (LOI) from <strong>Indian Oil Corporation Limited (IOCL)</strong>
+        for <strong>each project</strong> for the selling of
+        <strong>Compressed Bio-Gas (CBG)</strong>, strengthening commercial viability
+        and long-term offtake assurance.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+  <!-- Certificates -->
+  <section class="certificates">
+    <h2>Licenses & Certificates</h2>
+
+   <div class="cert-grid">
+
+  <div class="cert-card">
+    <h3>NURSERY LICENSE</h3>
+    <button onclick="viewPDF('pdf/NURSERY LICENSE.pdf')">View PDF</button>
+  </div>
+
+  <div class="cert-card">
+    <h3>Super Napier Grass Analysis Report</h3>
+    <button onclick="viewPDF('pdf/Super Napier Grass Analysis Report.pdf')">View PDF</button>
+  </div>
+
+  <div class="cert-card">
+    <h3>Certificate</h3>
+    <button onclick="viewPDF('pdf/cert3.pdf')">View PDF</button>
+  </div>
+
+</div>
+
+
+    <iframe id="pdfViewer" class="pdf-viewer"></iframe>
+  </section>
+
+  <!-- Enhanced Nursery Section -->
+  <section class="nursery">
+    <h2>Cactus & Napier Grass Nursery</h2>
+    <p class="nursery-intro">
+      We proudly operate a state-of-the-art specialized nursery featuring both Cactus and Napier Grass cultivation, 
+      essential for sustainable agricultural and bio-energy applications. Our nursery serves as a cornerstone for 
+      environmental restoration and renewable energy projects across the region.
+    </p>
+
+    <div class="nursery-grid">
+      <!-- Cactus Nursery Card -->
+      <div class="nursery-card">
+        <img src="image/cactus nursery.jpeg" alt="Cactus Nursery" class="nursery-image">
+        <div class="nursery-content">
+          <h3>Cactus Nursery</h3>
+          <p>
+            Our specialized cactus nursery focuses on cultivating drought-resistant species that support 
+            sustainable landscaping and desert ecosystem restoration. We grow a diverse range of indigenous 
+            and exotic cacti varieties perfect for xeriscaping and water conservation projects.
+          </p>
+          
+          <div class="nursery-features">
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Drought-resistant species for arid landscapes</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Low maintenance xeriscaping solutions</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Ecosystem restoration and soil conservation</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Native and exotic varieties available</span>
+            </div>
+          </div>
+
+          <div class="nursery-stats">
+            <div class="stat-card">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Species</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">10,000+</span>
+              <span class="stat-label">Plants/Year</span>
+            </div>
+          </div>
+
+          <div class="nursery-process">
+            <h4>Growing Process</h4>
+            <div class="process-steps">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div>Seed Selection</div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div>Propagation</div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div>Care & Growth</div>
+              </div>
+              <div class="step">
+                <div class="step-number">4</div>
+                <div>Quality Check</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Napier Grass Nursery Card -->
+      <div class="nursery-card">
+        <img src="image/nursery2.jpeg" alt="Napier Grass Nursery" class="nursery-image">
+        <div class="nursery-content">
+          <h3>Napier Grass Nursery</h3>
+          <p>
+            Our Napier Grass nursery specializes in high-yield biomass production for bio-energy generation. 
+            This fast-growing perennial grass serves as an excellent source for biogas production, animal feed, 
+            and soil erosion control, making it a cornerstone of sustainable agriculture.
+          </p>
+          
+          <div class="nursery-features">
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>High biomass yield for energy production</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Excellent animal feed quality</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Soil erosion control and rehabilitation</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Rapid growth and harvesting cycles</span>
+            </div>
+          </div>
+
+          <div class="nursery-stats">
+            <div class="stat-card">
+              <span class="stat-number">200+</span>
+              <span class="stat-label">Tons/Hectare/Year</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">4-6</span>
+              <span class="stat-label">Harvests/Year</span>
+            </div>
+          </div>
+
+          <div class="nursery-process">
+            <h4>Cultivation Process</h4>
+            <div class="process-steps">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div>Land Preparation</div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div>Stem Cutting</div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div>Planting</div>
+              </div>
+              <div class="step">
+                <div class="step-number">4</div>
+                <div>Harvesting</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery-section">
+      <h3>Nursery Gallery</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="image/nursery-gallery-1.jpg" alt="Nursery Operations">
+          <div class="gallery-overlay">
+            <h4>Nursery Operations</h4>
+            <p>Daily care and maintenance activities</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="image/nursery-gallery-2.jpg" alt="Plant Growth">
+          <div class="gallery-overlay">
+            <h4>Plant Growth</h4>
+            <p>Healthy development stages</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="image/nursery-gallery-3.jpg" alt="Harvesting Process">
+          <div class="gallery-overlay">
+            <h4>Harvesting</h4>
+            <p>Efficient collection methods</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="image/nursery-gallery-4.jpg" alt="Quality Control">
+          <div class="gallery-overlay">
+            <h4>Quality Control</h4>
+            <p>Ensuring premium standards</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function viewPDF(path) {
+      document.getElementById("pdfViewer").src = path;
+      window.scrollTo(0, document.getElementById("pdfViewer").offsetTop - 100);
+    }
+  </script>
+
+</body>
+</html>

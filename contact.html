@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venturig - Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+         header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    header .logo span {
+      font-size: 22px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    header nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    header nav a:hover,
+    header nav a.active {
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    nav {
+      display: flex;
+    }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        /* Main Content */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .map-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .contact-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info h2 {
+            color: #050505;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f1f1;
+        }
+        
+        .contact-info h3 {
+            margin: 15px 0;
+            color: #333;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .contact-info a {
+            color: #050505;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .windows-activate {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 20px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                padding: 10px 0;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            header .logo span {
+                font-size: 18px;
+            }
+
+            header nav a {
+                font-size: 14px;
+                margin: 5px 20px;
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .content {
+                flex-direction: column;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .contact-info {
+                padding: 20px;
+            }
+
+            .contact-info h2 {
+                font-size: 24px;
+            }
+
+            .contact-info h3 {
+                font-size: 18px;
+            }
+        }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      z-index: 1000;
+    }
+
+    .dropdown-menu li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-menu li:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #333;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f8f9fa;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <!-- Replace this logo link with your own logo file (e.g., logo.png in same folder) -->
+      <img src="image/logo.jpeg" alt="Venturiq Logo">
+      <div class="Venturiq"></div>
+      <span>Venturiq</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="group.html">Venturiq Group</a>
+      <a href="technology.html">Technology Partners</a>
+      <a href="achievement.html">Achievements</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="gallery.html" class="dropdown">Gallery</a>
+      <ul class="dropdown-menu">
+        <li><a href="photos.html">Photos</a></li>
+        <li><a href="#">Videos</a></li>
+      </ul>
+      <a href="team.html">Team</a>
+      <a href="project.html">Projects</a>
+      <a href="#" class="active">Contact</a>
+    </nav>
+  </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Contact</h1>
+        </div>
+    </div>
+
+<div class="container">
+  <div class="content">
+    <div class="map-section">
+      <h2>View target map at farm</h2>
+      <div class="map-container" style="width:100%; height:400px;">
+        <iframe 
+          src="https://www.google.com/maps?q=16.24301722459201,74.45502972791262&hl=en&z=15&output=embed"
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="contact-section">
+      <div class="contact-info">
+        <h2>Contact</h2>
+        <h3>Venturiq Biouels Pvt Ltd</h3>
+        <p>912/AP Hitni, Taluka – Gadhinglaj,</p>
+        <p>District – Kolhapur,</p>
+        <p>Maharashtra, India. Pin-416501</p>
+        <p>Email id : <a href="mailto:cmd@venturiq.com">venturiqgroup@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <script>
+        // Toggle menu for mobile
+        function toggleMenu() {
+            const nav = document.getElementById('nav-menu');
+            nav.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>

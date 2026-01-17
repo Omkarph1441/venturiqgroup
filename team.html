@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team - Venturiq</title>
+
+  <style>
+    /* Reset some browser defaults */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      background-color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    header .logo span {
+      font-size: 22px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    header nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    header nav a:hover {
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    header nav a.active {
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    /* Main Section */
+    .page-title {
+      text-align: center;
+      margin: 60px 0 20px;
+    }
+
+    .page-title h1 {
+      font-size: 48px;
+      font-weight: 700;
+    }
+
+    .underline {
+      width: 60px;
+      height: 4px;
+      background-color: orange;
+      margin: 10px auto 0;
+    }
+
+    .team-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    /* Head person card (full width rectangular) */
+    .head-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: transform 0.3s ease, opacity 0.6s ease;
+    }
+
+    .head-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .head-card {
+      cursor: pointer;
+    }
+
+    .head-card img {
+      width: 180px;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .head-card img:hover {
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    .head-info .name {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .head-info .role {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .head-info .description {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Other team members (3 cards in a row) */
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .team-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: left;
+      transition: transform 0.3s ease, opacity 0.6s ease;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .team-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .team-card {
+      cursor: pointer;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 15px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .profile-img:hover {
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    .name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    .role {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #444;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      header .logo span {
+        font-size: 18px;
+      }
+
+      header nav a {
+        font-size: 14px;
+        margin: 5px 20px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .page-title h1 {
+        font-size: 36px;
+      }
+
+      .head-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .head-card img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .team-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .profile-img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .team-card {
+        padding: 15px;
+      }
+
+      .name {
+        font-size: 1.1rem;
+      }
+
+      .role {
+        font-size: 0.9rem;
+      }
+
+      .description {
+        font-size: 0.9rem;
+      }
+    }
+    </style>
+    </head>
+<body>
+
+   <header>
+     <div class="logo">
+       <!-- Replace this logo link with your own logo file (e.g., logo.png in same folder) -->
+       <img src="image/logo.jpeg" alt="Venturiq Logo">
+       <div class="Venturiq"></div>
+       <span>Venturiq</span>
+     </div>
+     <div class="menu-toggle" onclick="toggleMenu()">
+       <span></span>
+       <span></span>
+       <span></span>
+     </div>
+     <nav id="nav-menu">
+      <a href="index.html" >Home</a>
+      <a href="group.html">Venturiq Group</a>
+      <a href="technology.html">Technology Partners</a>
+      <a href="achievement.html">Achievements</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="gallery.html" class="dropdown">Gallery</a>
+       
+      <a href="#" class="active">Team</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-title">
+      <h1>Our Team</h1>
+      <div class="underline"></div>
+    </section>
+
+    <section class="team-section">
+
+      <!-- Head Person (CEO) -->
+      <div class="head-card show" onclick="window.open('sudhir.html', '_blank')">
+        <img src="image/director.jpg" alt="SUDHIR M PHADKE">
+        <div class="head-info">
+          <p class="name">SUDHIR M PHADKE</p>
+          <p class="role">MD & CEO</p>
+          <p class="description">
+            An accomplished business leader with over 10 years of experience in the renewable energy and biofuel sector, specializing in delivering turnkey, end-to-end projects on an EPC basis. Proven expertise in concept-to-commissioning project execution with a strong track record of setting up advanced biofuel plants and sustainable energy infrastructure across diverse geographies. Skilled at forging strong relationships with technology partners, government authorities and investors to ensure sustainable and profitable outcomes.
+          </p>
+        </div>
+      </div>
+
+      <!-- Other team members -->
+      <div class="team-container">
+        <!-- COO -->
+        <div class="team-card" onclick="window.open('dhiraj.html', '_blank')">
+          <img src="image/Dhiraj.jpeg" alt="Dhiraj Gawai" class="profile-img">
+          <p class="name">DHIRAJ GAWAI</p>
+          <p class="role">CHIEF OPERATING OFFICER</p>
+          <p class="description">
+            Chief Operating Officer (COO) of a leading project management company specializing in end-to-end turnkey solutions for bio-CNG manufacturing plants. With a strong focus on operational excellence, project execution, and sustainable energy solutions, the COO oversees strategic planning, resource optimization, and on-time project delivery across the bioenergy sector.
+          </p>
+        </div>
+
+        <!-- GM -->
+        <div class="team-card" onclick="window.open('harshal.html', '_blank')">
+          <img src="image/harshal.jpg" alt="Harshal Hallarwadkar" class="profile-img">
+          <p class="name">HARSHAL HALLARWADKAR</p>
+          <p class="role">GENERAL MANAGER</p>
+          <p class="description">
+            Harshal Hallarwadkar is an accomplished General Manager with extensive experience in renewable energy, particularly Bio-CNG. He leads nationwide turnkey project management, overseeing projects from planning and design to commissioning and handover. With strong expertise in engineering, operations, regulatory compliance, and vendor management, he ensures timely, sustainable, and cost-efficient project delivery. His leadership has positioned the company as a trusted partner in India’s clean energy transition.
+          </p>
+        </div>
+
+        <!-- Accounts Controller -->
+        <div class="team-card" onclick="window.open('nitin.html', '_blank')">
+          <img src="image/nitin.jpeg" alt="Nitin Khot" class="profile-img">
+          <p class="name">NITIN KHOT</p>
+          <p class="role">ACCOUNT & FINANCE CONTROLLER</p>
+          <p class="description">
+            Accounts Controller at a turnkey project management company, specializing in financial planning, budgeting, and cost control for large-scale infrastructure and renewable energy projects. Responsible for guiding clients and internal teams on financial compliance, project accounting, and fund management, ensuring transparency and fiscal efficiency throughout all phases of project execution.
+          </p>
+        </div>
+
+        <!-- Director Procurement -->
+        <div class="team-card" onclick="window.open('Netaji.html', '_blank')">
+          <img src="image/netaji.jpeg" alt="Netaji Kondubhairy" class="profile-img">
+          <p class="name">Netaji Bhimrao Kondubhairy</p>
+          <p class="role"> DIRECTOR PROCUREMENT</p>
+          <p class="description">
+           Netaji Bhimrao Kondubhairy, Proprietor of M/s Super Napier Nursery, Solapur, Maharashtra, is a diploma holder in Agriculture who's successfully cultivated high-yielding Super Napier Grass. His nursery is licensed by the Govt. of Maharashtra and approved by agricultural scientists. He's innovating and has applied for registration of "SAMARTH SUPER NAPIER" with PPV&FRA. His work on Napier grass is recognized for its potential in renewable energy, making him a strong fit for a Director Procurement role in the bio-fuel industry.
+        </div>
+      </div>
+    </section>
+ </main>
+
+  <script>
+    // Toggle menu for mobile
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('active');
+    }
+
+    // JavaScript functionality (placeholder)
+    console.log("Team page loaded.");
+    // Fade-in on scroll animation using Intersection Observer
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll(".team-card");
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target); // animate once
+          }
+        });
+      }, { threshold: 0.2 });
+
+      cards.forEach(card => observer.observe(card));
+    });
+  </script>
+</body>
+</html>

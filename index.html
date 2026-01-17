@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venturiq</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    header .logo span {
+      font-size: 22px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    header nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    header nav a:hover,
+    header nav a.active {
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    /* Hero Slider */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide .content {
+      position: absolute;
+      top: 50%;
+      right: 10%;
+      transform: translateY(-50%);
+      background: #fff;
+      padding: 20px;
+      max-width: 350px;
+    }
+
+    .slide .content h2 {
+      color: #006400;
+      margin-bottom: 10px;
+    }
+
+    .arrows {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .arrows.left {
+      left: 20px;
+    }
+
+    .arrows.right {
+      right: 20px;
+    }
+
+    /* About Section */
+    .about {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 50px;
+      flex-wrap: wrap;
+    }
+
+    .about img {
+      width: 350px;
+      border-radius: 8px;
+    }
+
+    .about-text {
+      max-width: 500px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .about-text h2 {
+      margin-bottom: 10px;
+    }
+
+    .vision {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 50px;
+      flex-wrap: wrap;
+      background: #f9f9f9;
+    }
+
+    .vision img {
+      width: 350px;
+      border-radius: 8px;
+    }
+
+    .vision-text {
+      max-width: 500px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .vision-text h2 {
+      margin-bottom: 10px;
+    }
+
+     .mission {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 50px;
+      flex-wrap: wrap;
+      background: #f9f9f9;
+    }
+
+    .mission img {
+      width: 350px;
+      border-radius: 8px;
+    }
+
+    .mission-text {
+      max-width: 500px;
+    }
+
+    .mission-text {
+      max-width: 500px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .mission-text h2 {
+      margin-bottom: 10px;
+    }
+
+    .director-text {
+      max-width: 500px;
+    }
+
+    .director-text h2 {
+      margin-bottom: 10px;
+    }
+
+    .updates-text {
+      max-width: 500px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .updates-text h2 {
+      margin-bottom: 10px;
+    }
+
+    .values {
+      padding: 50px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    .values h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .value-card {
+      background: #fff;
+      padding: 20px;
+      border: 2px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .value-card h3 {
+      color: #006400;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .value-card p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .leadership {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 50px;
+      flex-wrap: wrap;
+      background: #f9f9f9;
+    }
+
+    .leadership img {
+      width: 350px;
+      border-radius: 8px;
+    }
+
+    .leadership-text {
+      max-width: 500px;
+    }
+
+    .leadership h2 {
+      margin-bottom: 10px;
+    }
+
+     .conduct {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 50px;
+      flex-wrap: wrap;
+      background: #f9f9f9;
+    }
+
+    .conduct img {
+      width: 350px;
+      border-radius: 8px;
+    }
+
+    .conduct-text {
+      max-width: 500px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .conduct-text h2 {
+      margin-bottom: 10px;
+    }
+
+    .updates {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 50px;
+      flex-wrap: wrap;
+      background: #f9f9f9;
+    }
+
+    .updates img {
+      width: 350px;
+      border-radius: 8px;
+    }
+
+    .updates-text {
+      max-width: 500px;
+    }
+
+    .updates h2 {
+      margin-bottom: 10px;
+    }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+  }
+
+  .dropdown-menu li {
+    border-bottom: 1px solid #eee;
+  }
+
+  .dropdown-menu li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    white-space: nowrap;
+  }
+
+  .dropdown-menu a:hover {
+    background: #f8f9fa;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    header {
+      padding: 10px 20px;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      flex-direction: column;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 10px 0;
+    }
+
+    nav.active {
+      display: flex;
+    }
+
+    header nav a {
+      font-size: 14px;
+      margin: 5px 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    header .logo span {
+      font-size: 18px;
+    }
+
+    .slider {
+      height: 300px;
+    }
+
+    .slide .content {
+      right: 5%;
+      max-width: 250px;
+      padding: 15px;
+    }
+
+    .slide .content h2 {
+      font-size: 18px;
+    }
+
+    .arrows {
+      font-size: 24px;
+      padding: 8px;
+    }
+
+    .arrows.left {
+      left: 10px;
+    }
+
+    .arrows.right {
+      right: 10px;
+    }
+
+    .about, .vision, .mission, .director, .leadership, .conduct, .updates {
+      padding: 30px 20px;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .about img, .vision img, .mission img, .director img, .leadership img, .conduct img, .updates img {
+      width: 250px;
+      margin-bottom: 20px;
+    }
+
+    .about-text, .vision-text, .mission-text, .director-text, .leadership-text, .conduct-text, .updates-text {
+      margin-left: 0;
+      max-width: 100%;
+    }
+
+    .values {
+      padding: 30px 20px;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .value-card {
+      padding: 15px;
+      clip-path: none;
+      border-radius: 8px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <!-- Replace this logo link with your own logo file (e.g., logo.png in same folder) -->
+      <img src="image/logo.jpeg" alt="Venturiq Logo">
+      <div class="Venturiq"></div>
+      <span>Venturiq</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="nav-menu">
+      <a href="#" class="active">Home</a>
+      <a href="group.html">Venturiq Group</a>
+      <a href="technology.html">Technology Partners</a>
+      <a href="achievement.html">Achievements</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="gallery.html" class="dropdown">Gallery</a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Photos</a></li>
+        <li><a href="#">Videos</a></li>
+      </ul>
+      <a href="team.html">Team</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slide active" style="background-image: url('image/go_green_fakro_1.png');">
+      <div class="content">
+        <h2>VENTURIQ</h2>
+        <p>Powering a Greener Tomorrow with Bio-CNG Innovation</p>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('image/slide6.jpeg');"></div>
+    <div class="slide" style="background-image: url('image/mbebanner.webp');">
+      <div class="content">
+        <h2>GREEN ENERGY FUTURE</h2>
+        <p>Innovating to transform the energy landscape for a sustainable tomorrow.</p>
+      </div>
+    </div>
+    <span class="arrows left" onclick="prevSlide()">&#10094;</span>
+    <span class="arrows right" onclick="nextSlide()">&#10095;</span>
+  </div>
+
+  <!-- About Us -->
+  <section class="about">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p><strong>Who We Are</strong></p>
+      <p>We are a forward-thinking clean energy company dedicated to driving India's transition towards a sustainable future through the development and implementation of Bio-CNG (Compressed Natural Gas from biomass) projects. With a sharp focus on innovation, reliability, and environmental stewardship, we specialize in delivering end-to-end turnkey solutions for Bio-CNG plants nationwide.
+Our expertise spans the entire project lifecycle—from conceptualization, design, engineering, procurement, and construction, to commissioning and operations support. Leveraging cutting-edge technologies and a skilled multidisciplinary team, we ensure our clients receive efficient, cost-effective, and future-ready Bio-CNG infrastructure tailored to their specific needs.<br>
+We work closely with stakeholders across the public and private sectors, aligning with national sustainability goals and contributing to a cleaner, greener, and energy-secure India.</p>
+    </div>
+    <img src="image/about.jpg" alt="About">
+  </section>
+
+  <!-- Vision -->
+  <section class="vision">
+     <img src="image/vision.jpg" alt="Vision">
+    <div class="vision-text">
+      <h2>Vision</h2>
+      <p>To be the leading force in delivering sustainable energy infrastructure by providing world class project management solutions for renewable energy projects. We envision the future when clean energy is accessible, efficient and scalable driven by our commitment to innovation, environment responsibility and operational excellence.</p>
+    </div>
+  </section>
+
+   <!-- Mission -->
+  <section class="mission">
+    <div class="mission-text">
+      <h2>Mission</h2>
+      <p>To develop and deliver cost effective, safe and clean solutions that will maximize prosperity of our customers to be a responsible corporate citizen.</p>
+    </div>
+    <img src="image/mission.jpg" alt="mission">
+  </section>
+
+  <!-- Core Values -->
+  <section class="values">
+    <h2>Core Values</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <h3>Integrity</h3>
+        <p>We will conduct business fairly and be transparent in all our interactions. We will adhere to the regulatory framework and maintain client confidentiality.</p>
+      </div>
+      <div class="value-card">
+        <h3>Innovation</h3>
+        <p>We will be forward thinking in creating value for the world and business for our customers.</p>
+      </div>
+      <div class="value-card">
+        <h3>Passion</h3>
+        <p>It will be our dedicated endeavor to improve quality of our life. We will constantly seek and build excellence in our offerings.</p>
+      </div>
+      <div class="value-card">
+        <h3>Responsibility</h3>
+        <p>We will always deliver on our promise. Through our business interaction and social initiatives, we will strive to be recognized as a benchmark for the industry.</p>
+      </div>
+      <div class="value-card">
+        <h3>Collaboration</h3>
+        <p>Strong partnerships and seamless teamwork drive the success of complex projects across stakeholders.</p>
+      </div>
+      <div class="value-card">
+        <h3>Accountability</h3>
+        <p>Take full ownership of commitments, ensuring promises are met and expectations exceeded.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code of Conduct for Management -->
+<section class="conduct">
+  <img src="image/code of conduct.jpg" alt="conduct">
+  <div class="conduct-text">
+    <h2>Code of Conduct for Management</h2>
+    <ul>
+      <li>The code of conduct sets out the principles and standards of behaviour expected of members when performing their professional duties.</li>
+      <li>All members are required to uphold the standards set out in the code.</li>
+      <li>Members must maintain the reputation of the institute by implementing and observing the code’s requirements.</li>
+      <li>The code applies to all members irrespective of their category, role, or place of employment.</li>
+      <li>It governs the conduct of the individual rather than specific activities.</li>
+    </ul>
+  </div>
+</section>
+
+  <!-- Ministry Updates -->
+  <section class="updates">
+    <div class="updates-text">
+      <h2>Ministry Updates</h2>
+      <p></p>
+    </div>
+    <img src="image/updates.jpg" alt="updates">
+  </section>
+
+  <script>
+    // Toggle menu for mobile
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('active');
+    }
+
+    let slides = document.querySelectorAll('.slide');
+    let index = 0;
+
+    function showSlide(i) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[i].classList.add('active');
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }
+
+    function prevSlide() {
+      index = (index - 1 + slides.length) % slides.length;
+      showSlide(index);
+    }
+
+    setInterval(nextSlide, 5000); // Auto change every 5 sec
+  </script>
+</body>
+</html>
+
