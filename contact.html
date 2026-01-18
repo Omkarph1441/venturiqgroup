@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venturig - Contact</title>
+    <title>Venturiq</title>
+    <link rel="icon" href="image/favicon.jpeg" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -39,9 +40,12 @@
     }
 
     header .logo {
-      display: flex;
-      align-items: center;
-    }
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
 
     header .logo img {
       height: 40px;
@@ -61,10 +65,12 @@
       font-size: 14px;
     }
 
-    header nav a:hover,
-    header nav a.active {
-      font-weight: bold;
-    }
+    header .logo:visited,
+header .logo:hover,
+header .logo:active {
+  text-decoration: none !important;
+  color: #000;
+}
 
     .menu-toggle {
       display: none;
@@ -287,12 +293,10 @@
 <body>
   <!-- Header -->
   <header>
-    <div class="logo">
-      <!-- Replace this logo link with your own logo file (e.g., logo.png in same folder) -->
-      <img src="image/logo.jpeg" alt="Venturiq Logo">
-      <div class="Venturiq"></div>
-      <span>Venturiq</span>
-    </div>
+    <a href="index.html" class="logo">
+  <img src="image/logo.jpeg" alt="Venturiq Logo">
+  <span>Venturiq</span>
+</a>
     <div class="menu-toggle" onclick="toggleMenu()">
       <span></span>
       <span></span>
@@ -341,11 +345,25 @@
     <div class="contact-section">
       <div class="contact-info">
         <h2>Contact</h2>
-        <h3>Venturiq Biouels Pvt Ltd</h3>
-        <p>912/AP Hitni, Taluka – Gadhinglaj,</p>
-        <p>District – Kolhapur,</p>
-        <p>Maharashtra, India. Pin-416501</p>
-        <p>Email id : <a href="mailto:cmd@venturiq.com">venturiqgroup@gmail.com</a></p>
+        <h3><i class="fas fa-building"></i> Venturiq Group Pvt Ltd</h3>
+        <p>
+         <i class="fas fa-location-dot"></i>
+         912/AP Hitni, Taluka – Gadhinglaj,<br>
+         District – Kolhapur,<br>
+         Maharashtra, India. Pin-416501
+        </p>
+        <p>
+          <i class="fas fa-envelope"></i>
+            Email id :
+            <a href="mailto:admin@venturiq.com">admin@venturiq.com</a>
+        </p>
+        <p>
+          <i class="fas fa-phone"></i>
+            Phone :
+            <a href="tel:+91-9822789666">+91-9822789666</a> /
+            <a href="tel:+91-8329237285">+91-8329237285</a>
+        </p>
+
       </div>
     </div>
   </div>

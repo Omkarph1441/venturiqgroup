@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Venturiq Group</title>
+  <title>Venturiq</title>
+  <link rel="icon" href="image/favicon.jpeg" type="image/jpeg">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: Arial, sans-serif; background: #fff; color: #333; line-height: 1.6; }
@@ -13,7 +14,15 @@
       padding: 15px 50px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       position: sticky; top: 0; z-index: 1000;
     }
-    header .logo { display: flex; align-items: center; }
+
+    header .logo {
+  text-decoration: none !important;
+  color: #000;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
     header .logo img { height: 40px; margin-right: 10px; }
     header .logo span { font-size: 22px; font-weight: bold; }
     header nav a { margin: 0 12px; text-decoration: none; color: #333; font-size: 14px; }
@@ -56,7 +65,7 @@
       transform: translateY(-6px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     }
-    .text { flex: 1; }
+    .text { flex: 1; text-align: justify; }
     .text h2 { margin-bottom: 1rem; color: #222; }
 
     /* Our Project Section Background */
@@ -133,10 +142,10 @@
 </head>
 <body>
    <header>
-    <div class="logo">
-      <img src="image/logo.jpeg" alt="Venturiq Logo">
-      <span>Venturiq</span>
-    </div>
+    <a href="index.html" class="logo">
+  <img src="image/logo.jpeg" alt="Venturiq Logo">
+  <span>Venturiq</span>
+</a>
     <div class="menu-toggle" onclick="toggleMenu()">
       <span></span>
       <span></span>
@@ -208,7 +217,7 @@
             </div>
             <div class="card-back">
               <p>
-                Renewable fuel from organic waste.  
+                <strong>Renewable fuel from organic waste.</strong>  
                 <ul>
                   <li>Reduces fossil fuel use</li>
                   <li>Lowers emissions</li>
@@ -229,7 +238,7 @@
             </div>
             <div class="card-back">
               <p>
-                By-product of CBG production.  
+                <strong>By-product of CBG production.</strong>  
                 <ul>
                   <li>Liquid Bio-Slurry</li>
                   <li>Dried Bio-Manure</li>
@@ -251,6 +260,27 @@
               <p>
                 Captured during purification process.  
                 Useful in industrial and commercial applications, reducing waste and creating value.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="image/biocoal.png" alt="BIOCOAL Icon">
+              <h3>Bio Coal</h3>
+            </div>
+            <div class="card-back">
+              <p>
+                <strong>Features of Bio-Coal from CBG Biomass.</strong>  
+                <ul>
+                  <li>Sustainable, high-energy solid fuel produced from biomass residues of CBG plants</li>
+                  <li>Low-carbon alternative to conventional coal, significantly reducing CO₂ emissions</li>
+                  <li>Utilizes waste biomass, supporting circular economy and zero-waste operations</li>
+                  <li>Efficient calorific value, suitable for industrial boilers, kilns, and thermal applications</li>
+                </ul>
               </p>
             </div>
           </div>

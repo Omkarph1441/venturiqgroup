@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Team - Venturiq</title>
+  <title>Venturiq</title>
+  <link rel="icon" href="image/favicon.jpeg" type="image/jpeg">
 
   <style>
     /* Reset some browser defaults */
@@ -32,9 +33,12 @@
     }
 
     header .logo {
-      display: flex;
-      align-items: center;
-    }
+  text-decoration: none !important;
+  color: #000;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
 
     header .logo img {
       height: 40px;
@@ -303,12 +307,10 @@
 <body>
 
    <header>
-     <div class="logo">
-       <!-- Replace this logo link with your own logo file (e.g., logo.png in same folder) -->
-       <img src="image/logo.jpeg" alt="Venturiq Logo">
-       <div class="Venturiq"></div>
-       <span>Venturiq</span>
-     </div>
+     <a href="index.html" class="logo">
+  <img src="image/logo.jpeg" alt="Venturiq Logo">
+  <span>Venturiq</span>
+</a>
      <div class="menu-toggle" onclick="toggleMenu()">
        <span></span>
        <span></span>
@@ -383,11 +385,19 @@
         <!-- Director Procurement -->
         <div class="team-card" onclick="window.open('Netaji.html', '_blank')">
           <img src="image/netaji.jpeg" alt="Netaji Kondubhairy" class="profile-img">
-          <p class="name">Netaji Bhimrao Kondubhairy</p>
+          <p class="name">NETAJI BHIMRAO KONDUBHAIRY</p>
           <p class="role"> DIRECTOR PROCUREMENT</p>
           <p class="description">
            Netaji Bhimrao Kondubhairy, Proprietor of M/s Super Napier Nursery, Solapur, Maharashtra, is a diploma holder in Agriculture who's successfully cultivated high-yielding Super Napier Grass. His nursery is licensed by the Govt. of Maharashtra and approved by agricultural scientists. He's innovating and has applied for registration of "SAMARTH SUPER NAPIER" with PPV&FRA. His work on Napier grass is recognized for its potential in renewable energy, making him a strong fit for a Director Procurement role in the bio-fuel industry.
         </div>
+
+        <!-- Valuation Professional -->
+        <div class="team-card" onclick="window.open('Samruddhi.html', '_blank')">
+          <img src="image/DSC_3820.jpg" alt="Samruddhi Bhosale" class="profile-img">
+          <p class="name">Samruddhi Bhosale</p>
+          <p class="role">VALUATION SPECIALIST</p>
+          <p class="description">
+           Miss. Samruddhi Bhosale is a valuation professional specializing in financial assessment of Compressed Bio-Gas (CBG) manufacturing companies and renewable energy projects. She has experience in project valuation, financial modeling, CAPEX–OPEX analysis, and assessment of revenue streams including CBG sales, bio-manure, and carbon credits. She supports promoters, investors, and lenders with transparent, bankable valuation reports aligned with industry standards and regulatory frameworks.
       </div>
     </section>
  </main>

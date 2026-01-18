@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Achievements - Venturiq</title>
-
+  <title>Venturiq</title>
+  <link rel="icon" href="image/favicon.jpeg" type="image/jpeg">
   <style>
     * {
       margin: 0;
@@ -32,13 +32,22 @@
     }
 
     header .logo {
-      display: flex;
-      align-items: center;
-    }
+  text-decoration: none !important;
+  color: #000;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
 
     header .logo img {
       height: 40px;
       margin-right: 10px;
+    }
+
+    header .logo span {
+      font-size: 22px;
+      font-weight: bold;
+      color: #222;
     }
 
     header nav a {
@@ -48,9 +57,12 @@
       font-size: 14px;
     }
 
+    header .logo:visited,
     header nav a:hover,
     header nav a.active {
       font-weight: bold;
+      text-decoration: none !important;
+      color: #000;
     }
 
     .hero { 
@@ -137,6 +149,34 @@
       overflow: hidden;
     }
 
+    /* ===== Achievement Media Fix ===== */
+.achievement-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: justify;
+}
+
+/* Image container for EPC */
+.achievement-media {
+  width: 100%;
+  height: 150px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+/* EPC diagram image */
+.achievement-media img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+
+
     .achievement-card::before {
       content: '';
       position: absolute;
@@ -165,6 +205,18 @@
       color: #006400;
       margin-bottom: 10px;
     }
+
+/* Decorative divider for cards without images */
+.achievement-card h3::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #006400, #28a745);
+  margin: 8px auto 15px;
+  border-radius: 2px;
+}
+
 
     .achievement-card p {
       color: #666;
@@ -581,10 +633,11 @@
 
   <!-- Header -->
   <header>
-    <div class="logo">
-      <img src="image/logo.jpeg">
-      <span>Venturiq</span>
-    </div>
+    <a href="index.html" class="logo">
+  <img src="image/logo.jpeg" alt="Venturiq Logo">
+  <span>Venturiq</span>
+</a>
+
     <div class="menu-toggle" onclick="toggleMenu()">
       <span></span>
       <span></span>
@@ -623,6 +676,9 @@
 
     <!-- Card 1 -->
     <div class="achievement-card">
+      <div class="achievement-media">
+        <img src="image/strategicgp.jpg" alt="Strategic Green Partnerships">
+      </div>
       <h3>Strategic Green Partnerships</h3>
       <p>
         Tied up with multiple entities involved in green and renewable energy projects,
@@ -633,17 +689,23 @@
 
     <!-- Card 2 -->
     <div class="achievement-card">
+      <div class="achievement-media">
+        <img src="image/epc.jpeg" alt="EPC Process">
+      </div>
+
       <h3>EPC Turnkey Contracts</h3>
       <p>
-        Executing EPC contracts on a turnkey basis with <strong>09 companies</strong>
-        to develop <strong>10 TPD CBG manufacturing units</strong>, utilizing
-        <strong>80% press mud</strong> and <strong>20% Napier grass</strong>
-        as base raw materials.
+        Executing EPC contracts on a turnkey basis with 15 companies to develop 10 TPD 
+        & 5TPD CBG manufacturing units, utilizing multiple feedstocks as per availability 
+        as well as profitability. Majorly focused on Napier grass as base raw materials.
       </p>
     </div>
 
     <!-- Card 3 -->
     <div class="achievement-card">
+      <div class="achievement-media">
+        <img src="image/rawmaterial.jpg" alt="Strategic Green Partnerships">
+      </div>
       <h3>Raw Material Supply Network</h3>
       <p>
         Established long-term raw material supply contracts with farmers for
@@ -654,10 +716,13 @@
 
     <!-- Card 4 (NEW) -->
     <div class="achievement-card">
+      <div class="achievement-media">
+        <img src="image/IOCL.jpeg" alt="Strategic Green Partnerships">
+      </div>
       <h3>IOCL Letter of Intent (LOI)</h3>
       <p>
         Received Letter of Intent (LOI) from <strong>Indian Oil Corporation Limited (IOCL)</strong>
-        for <strong>each project</strong> for the selling of
+        for each project for the selling of
         <strong>Compressed Bio-Gas (CBG)</strong>, strengthening commercial viability
         and long-term offtake assurance.
       </p>
@@ -673,17 +738,17 @@
    <div class="cert-grid">
 
   <div class="cert-card">
-    <h3>NURSERY LICENSE</h3>
-    <button onclick="viewPDF('pdf/NURSERY LICENSE.pdf')">View PDF</button>
+    <h3> LICENSE</h3>
+    <button onclick="viewPDF('pdf/cert1.pdf')">View PDF</button>
   </div>
 
   <div class="cert-card">
-    <h3>Super Napier Grass Analysis Report</h3>
-    <button onclick="viewPDF('pdf/Super Napier Grass Analysis Report.pdf')">View PDF</button>
+    <h3>LICENSE</h3>
+    <button onclick="viewPDF('pdf/cert2.pdf')">View PDF</button>
   </div>
 
   <div class="cert-card">
-    <h3>Certificate</h3>
+    <h3>LICENSE</h3>
     <button onclick="viewPDF('pdf/cert3.pdf')">View PDF</button>
   </div>
 
