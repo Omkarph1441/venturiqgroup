@@ -427,31 +427,55 @@
       transform: translateY(0);
     }
 
-   /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      header {
-        padding: 10px 20px;
-      }
-      
-      .menu-toggle {
-        display: flex;
-      }
-    
-      nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #fff;
-        flex-direction: column;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        padding: 10px 0;
-      }
+   /* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
 
-      nav.active {
-        display: flex;
-      }
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  header {
+    padding: 10px 20px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px 0;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  header nav a {
+    font-size: 14px;
+    margin: 5px 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+}
+
 
       .hero h1 {
         font-size: 2.2rem;
@@ -520,9 +544,7 @@
   font-size: 16px;
   color: #333;
   margin-bottom: 10px;
-}
-
-    }
+} 
 
   </style>
 </head>
@@ -824,6 +846,12 @@
     function viewPDF(path) {
       document.getElementById("pdfViewer").src = path;
       window.scrollTo(0, document.getElementById("pdfViewer").offsetTop - 100);
+    }
+
+// Toggle menu for mobile
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('active');
     }
   </script>
 
