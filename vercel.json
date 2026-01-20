@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+
+    { "source": "/achievement", "destination": "/achievement.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/project", "destination": "/project.html" },
+    { "source": "/gallery", "destination": "/gallery.html" },
+    { "source": "/team", "destination": "/team.html" },
+    { "source": "/technology", "destination": "/technology.html" },
+    { "source": "/sustainability", "destination": "/sustainability.html" },
+
+    { "source": "/sudhir", "destination": "/sudhir.html" },
+    { "source": "/netaji", "destination": "/netaji.html" },
+    { "source": "/nitin", "destination": "/nitin.html" },
+    { "source": "/harshal", "destination": "/harshal.html" },
+    { "source": "/group", "destination": "/group.html" },
+    { "source": "/dhiraj", "destination": "/dhiraj.html" }
+  ]
+}
