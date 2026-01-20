@@ -1,6 +1,8 @@
 {
+    "cleanUrls": true,
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
+    
 
     { "source": "/achievement", "destination": "/achievement.html" },
     { "source": "/contact", "destination": "/contact.html" },
@@ -18,3 +20,4 @@
     { "source": "/dhiraj", "destination": "/dhiraj.html" }
   ]
 }
+
